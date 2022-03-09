@@ -2,10 +2,12 @@ lockfileVersion: 5.3
 
 specifiers:
   axios: ^0.26.0
+  bangumi-data: ^0.3.83
   cheerio: ^1.0.0-rc.10
 
 dependencies:
   axios: 0.26.0
+  bangumi-data: 0.3.83
   cheerio: 1.0.0-rc.10
 
 packages:
@@ -16,6 +18,10 @@ packages:
       follow-redirects: 1.14.9
     transitivePeerDependencies:
       - debug
+    dev: false
+
+  /bangumi-data/0.3.83:
+    resolution: {integrity: sha512-m0DvmHF4yxJ+XcDbxSARLNtHgqRqlwtV+8ms7mGEETpLx520sicR0bN5/w3e3DxCr5hr/guqZ/TS2DQ6o3fP1Q==}
     dev: false
 
   /boolbase/1.0.0:
