@@ -1,0 +1,26 @@
+{
+  "name": "bangumitv-subject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GeeKaven/BangumiTV-Subject.git"
+  },
+  "keywords": [
+    "bangumi"
+  ],
+  "author": "geekaven",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/GeeKaven/BangumiTV-Subject/issues"
+  },
+  "homepage": "https://github.com/GeeKaven/BangumiTV-Subject#readme",
+  "dependencies": {
+    "axios": "^0.26.0",
+    "cheerio": "^1.0.0-rc.10"
+  }
+}
