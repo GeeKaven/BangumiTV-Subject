@@ -5,6 +5,8 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "ids": "node --experimental-json-modules ids.js",
+    "subject": "node subject.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -12,7 +14,8 @@
     "url": "git+https://github.com/GeeKaven/BangumiTV-Subject.git"
   },
   "keywords": [
-    "bangumi"
+    "bangumi",
+    "anime"
   ],
   "author": "geekaven",
   "license": "MIT",
