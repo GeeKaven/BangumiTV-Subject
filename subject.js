@@ -1,11 +1,11 @@
 import { readFileSync, existsSync, mkdirSync, writeFileSync } from 'fs'
 import { dirname } from 'path'
 import axios from 'axios'
+import { RateLimit } from 'async-sema'
 
-axios.defaults.timeout = 3000
+axios.defaults.timeout = 5000
 
 const rewrite = true
-const queueNum = 3
 const startIndex = 0
 
 const host = 'https://api.bgm.tv'
@@ -59,10 +59,10 @@ async function fetchSubject(id, index, count = 0) {
     if (error.response && error.response.status === 404) {
       console.log(`- 404 ${id}.json [${index}/${ids.length}]`)
       return true
-    } 
+    }
 
     if (count < retry) {
-      console.log(`- Retry ${id}.json [${index}/${ids.length}]`)
+      console.log(`- Retry ${id}.json [${index}/${ids.length}] count: ${count}`)
       return fetchSubject(id, index, count + 1)
     } else {
       console.log(`- [Error] ${id}.json [${index}/${ids.length}]`)
@@ -72,28 +72,10 @@ async function fetchSubject(id, index, count = 0) {
   }
 }
 
-async function queue(fetchs, num = 2) {
-  if (!fetchs.length) {
-    return false
-  }
-
-  await Promise.all(
-    Array.from({ length: num }).map(async () => {
-      while (fetchs.length) {
-        const fetch = fetchs.shift()
-        if (fetch) {
-          await fetch()
-        }
-      }
-    })
-  )
-
-  return true
+const limit = RateLimit(5)
+for (let i = 0; i < ids.length; i++) {
+  const id = ids[i];
+  if (i < startIndex) continue
+  await limit()
+  fetchSubject(id, i)
 }
-
-const fetchs = ids.map((id, index) => () => {
-  if (index < startIndex) return true
-  return fetchSubject(id, index)
-})
-
-queue(fetchs, queueNum)

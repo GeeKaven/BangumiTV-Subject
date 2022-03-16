@@ -1,16 +1,22 @@
 lockfileVersion: 5.3
 
 specifiers:
+  async-sema: ^3.1.1
   axios: ^0.26.0
   bangumi-data: ^0.3.83
   cheerio: ^1.0.0-rc.10
 
 dependencies:
+  async-sema: 3.1.1
   axios: 0.26.0
   bangumi-data: 0.3.83
   cheerio: 1.0.0-rc.10
 
 packages:
+
+  /async-sema/3.1.1:
+    resolution: {integrity: sha512-tLRNUXati5MFePdAk8dw7Qt7DpxPB60ofAgn8WRhW6a2rcimZnYBP9oxHiv0OHy+Wz7kPMG+t4LGdt31+4EmGg==}
+    dev: false
 
   /axios/0.26.0:
     resolution: {integrity: sha512-lKoGLMYtHvFrPVt3r+RBMp9nh34N0M8zEfCWqdWZx6phynIEhQqAdydpyBAAG211zlhX9Rgu08cOamy6XjE5Og==}
