@@ -30,8 +30,8 @@ jobs:
       - name: Install dependencies
         run: pnpm install
       - name: Build Subject
-        run: pnpm ids
-        run: pnpm subject
+        run: |
+          pnpm ids && pnpm subject
       - name: Commit files
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
