@@ -1,0 +1,26 @@
+name: Release with commit
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set Time
+        run: |
+          echo "TIME=$(date +"%Y%m%d")" >> $GITHUB_ENV
+      - name: Release
+        uses: ChanTsune/release-with-commit@v2.4.0
+        with:
+          regexp: "auto-commit"
+          regexp_options: "us"
+          release_name: "${{env.TIME}}"
+          tag_name: "${{env.TIME}}"
+          body: "${{env.TIME}}"
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: '${{secrets.GITHUB_TOKEN}}' # This token is provided by Actions, you do not need to create your own token
