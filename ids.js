@@ -42,6 +42,7 @@ async function buildIds() {
 
   data = []
   for (let i = 1; i <= page; i++) {
+    setTimeout(() => {}, 500)
     const url = `https://bgm.tv/anime/browser?sort=rank&page=${i}`
     const { data: html } = await fetch(url)
     const $ = cheerio.load(html)

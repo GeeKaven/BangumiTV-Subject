@@ -5,7 +5,7 @@ import axios from 'axios'
 axios.defaults.timeout = 3000
 
 const rewrite = true
-const queueNum = 8
+const queueNum = 3
 const startIndex = 0
 
 const host = 'https://api.bgm.tv'
@@ -80,7 +80,6 @@ async function queue(fetchs, num = 2) {
   await Promise.all(
     Array.from({ length: num }).map(async () => {
       while (fetchs.length) {
-        setTimeout(() => {}, 100)
         const fetch = fetchs.shift()
         if (fetch) {
           await fetch()
