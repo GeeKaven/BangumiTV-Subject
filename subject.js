@@ -28,8 +28,8 @@ function decode(str = '') {
       .replace(/&gt;/g, '>')
       .replace(/&nbsp;/g, ' ')
       // eslint-disable-next-line quotes
-      .replace(/&#39;/g, "'")
-      .replace(/&quot;/g, '"')
+      .replace(/&#39;/g, "\'")
+      .replace(/&quot;/g, '\'')
   )
 }
 
@@ -72,10 +72,12 @@ async function fetchSubject(id, index, count = 0) {
   }
 }
 
-const limit = RateLimit(5)
-for (let i = 0; i < ids.length; i++) {
-  const id = ids[i];
-  if (i < startIndex) continue
-  await limit()
-  fetchSubject(id, i)
-}
+// const limit = RateLimit(5)
+// for (let i = 0; i < ids.length; i++) {
+//   const id = ids[i];
+//   if (i < startIndex) continue
+//   await limit()
+//   fetchSubject(id, i)
+// }
+
+fetchSubject(51928, 0)
