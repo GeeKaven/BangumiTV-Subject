@@ -1,2 +1,2 @@
 # BangumiTV-Subject
-bangumitv
+bangumitv.
