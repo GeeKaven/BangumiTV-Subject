@@ -1,6 +1,7 @@
 name: Build Subject
 
 on:
+  workflow_dispatch:
   schedule:
     # Run “At 02:00 on day-of-month 1 in every 3rd month.”  (see https://crontab.guru)
     - cron: '0 2 1 * *'
