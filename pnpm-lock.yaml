@@ -3,7 +3,7 @@ lockfileVersion: 5.3
 specifiers:
   async-sema: ^3.1.1
   axios: ^0.26.0
-  bangumi-data: ^0.3.83
+  bangumi-data: ^0.3.*
   cheerio: ^1.0.0-rc.10
 
 dependencies:
