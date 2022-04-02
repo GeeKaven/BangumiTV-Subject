@@ -28,7 +28,7 @@ function write(filePath, data) {
 
 async function buildIds() {
   // 番剧 Rank : https://bgm.tv/anime/browser?sort=rank&page=1
-  const page = 285
+  const page = 300
   let data = []
 
   // 从 Bangumi-Data 中获取所有的番剧
