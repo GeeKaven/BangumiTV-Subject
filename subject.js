@@ -14,7 +14,8 @@ const headers = {
 }
 const ids = [
   ...JSON.parse(readFileSync('./ids/anime-bangumi-data.json', 'utf8')),
-  ...JSON.parse(readFileSync('./ids/rank-bangumi.json', 'utf8'))
+  ...JSON.parse(readFileSync('./ids/rank-bangumi.json', 'utf8')),
+  ...JSON.parse(readFileSync('./ids/calendar.json', 'utf8')),
 ]
 
 function decode(str = '') {

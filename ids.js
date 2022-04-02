@@ -31,7 +31,7 @@ async function buildIds() {
   const page = 285
   let data = []
 
-  // 从Bangumi-Data中获取所有的番剧
+  // 从 Bangumi-Data 中获取所有的番剧
   bangumiData.items.forEach(item => {
     const find = item.sites.find(site => site.site === 'bangumi')
     if (find) {
@@ -40,9 +40,10 @@ async function buildIds() {
   })
   write('./ids/anime-bangumi-data.json', data)
 
+  // 从 Bangumi Rank 中获取番剧
   data = []
   for (let i = 1; i <= page; i++) {
-    setTimeout(() => {}, 500)
+    setTimeout(() => { }, 500)
     const url = `https://bgm.tv/anime/browser?sort=rank&page=${i}`
     const { data: html } = await fetch(url)
     const $ = cheerio.load(html)
@@ -53,6 +54,15 @@ async function buildIds() {
   }
   write('./ids/rank-bangumi.json', data)
 
+  // 从放送表中获取番剧
+  data = []
+  const { data: calendar } = await fetch('https://api.bgm.tv/calendar')
+  calendar.forEach(item => {
+    const ids = item.items.map(element => parseInt(element.id))
+    data.push(...ids)
+  })
+
+  write('./ids/calendar.json', data)
   console.log('Done')
 }
 
