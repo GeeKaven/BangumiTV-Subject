@@ -13,7 +13,7 @@ jobs:
         run: |
           echo "TIME=$(date +"%Y%m%d")" >> $GITHUB_ENV
       - name: Release
-        uses: ChanTsune/release-with-commit@v2.4.0
+        uses: ChanTsune/release-with-commit@v3.0.0
         with:
           regexp: "auto-commit"
           regexp_options: "us"
