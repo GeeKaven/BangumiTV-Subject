@@ -10,7 +10,8 @@ const startIndex = 0
 
 const host = 'https://api.bgm.tv'
 const headers = {
-  'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36',
+  'User-Agent':
+    'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36',
 }
 const ids = [
   ...JSON.parse(readFileSync('./ids/anime-bangumi-data.json', 'utf8')),
@@ -29,8 +30,8 @@ function decode(str = '') {
       .replace(/&gt;/g, '>')
       .replace(/&nbsp;/g, ' ')
       // eslint-disable-next-line quotes
-      .replace(/&#39;/g, "\'")
-      .replace(/&quot;/g, '\'')
+      .replace(/&#39;/g, "'")
+      .replace(/&quot;/g, "'")
   )
 }
 
@@ -44,7 +45,9 @@ async function fetchSubject(id, index, count = 0) {
       return true
     }
 
-    const { data: apiRes } = await axios.get(`${host}/v0/subjects/${id}`, { headers })
+    const { data: apiRes } = await axios.get(`${host}/v0/subjects/${id}`, {
+      headers,
+    })
 
     const dirPath = dirname(filePath)
     if (!existsSync(dirPath)) {
@@ -56,7 +59,6 @@ async function fetchSubject(id, index, count = 0) {
 
     return true
   } catch (error) {
-
     if (error.response && error.response.status === 404) {
       console.log(`- 404 ${id}.json [${index}/${ids.length}]`)
       return true
@@ -75,7 +77,7 @@ async function fetchSubject(id, index, count = 0) {
 
 const limit = RateLimit(5)
 for (let i = 0; i < ids.length; i++) {
-  const id = ids[i];
+  const id = ids[i]
   if (i < startIndex) continue
   await limit()
   fetchSubject(id, i)
